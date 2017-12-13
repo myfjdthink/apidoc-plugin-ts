@@ -121,7 +121,7 @@ function setInterfaceElements(matchedInterface: InterfaceDeclaration, filename, 
     }
 
     // set the element
-    newElements.push(getParam(`{${capitalize(propLabel)}} ${typeDef} ${description}`));
+    newElements.push(getParam(`{${capitalize(propLabel)}} ${typeDef} ${description}`, newElements.element));
 
     // if property is an object or interface then we need to also display the objects properties
     if (propTypeIsObject) {
@@ -189,12 +189,12 @@ function extendInterface(matchedInterface: InterfaceDeclaration, interfacePath, 
 /**
  * Returns parameter object
  */
-function getParam(param) {
+function getParam(param, type = 'apiSuccess') {
   return {
     content: `${param}\n`,
-    name: 'apisuccess',
-    source: `@apiSuccess ${param}\n`,
-    sourceName: 'apiSuccess',
+    name: type.toLowerCase(),
+    source: `@${type} ${param}\n`,
+    sourceName: type,
   };
 }
 
