@@ -103,7 +103,9 @@ function setInterfaceElements(matchedInterface: InterfaceDeclaration, filename, 
     // set param type definition and description
     const typeDef = inttype ? `${inttype}.${prop.getName()}` : prop.getName();
     const descriptionPrefix = inttype ? `${inttype} > ` : '';
-    const description = descriptionPrefix + (prop.getDocumentationComment() || prop.getName());
+    const propDocNode = prop.getDocNodes()[0];
+    const propComment = propDocNode ? propDocNode.getComment() : prop.getName();
+    const description = descriptionPrefix + propComment;
 
     // set property type as a string
     const propType = prop.getType().getText();
