@@ -16,7 +16,7 @@ npm install --save-dev apidoc apidoc-plugin-ts
 A custom api-doc param "@apiInterface" is exposed:
 
 ```javascript
-@apiInterface (optional path) {INTERFACE_NAME} {REPLACE-API-PARAM: apiParam | apiSuccess}
+@apiInterface (optional path) {INTERFACE_NAME} REPLACE-API-PARAM
  ```
 
 ## Example
@@ -56,8 +56,7 @@ and the following custom param:
  @apiSuccess {Number} personalDetails.age
 ```
 
- *Note if the Person interface is defined in the same file then drop the path:*
+## Notes
 
-```javascript
- @apiInterface {Person}
-  ```
+* If the Person interface is defined in the same file then drop the path e.g ```@apiInterface {Person}```.
+* REPLACE-API-PARAM is optional and defaults to apiSuccess.
