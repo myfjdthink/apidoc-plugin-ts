@@ -43,7 +43,7 @@
     "chai": "^4.1.2",
     "copyfiles": "^1.2.0",
     "mocha": "^4.0.1",
-    "ts-node": "^4.0.1",
+    "ts-node": "^6.0.1",
     "tslint": "^5.8.0"
   },
   "dependencies": {
