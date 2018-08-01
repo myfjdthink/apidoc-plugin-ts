@@ -38,7 +38,7 @@
   "devDependencies": {
     "@types/chai": "^4.0.10",
     "@types/mocha": "^2.2.44",
-    "@types/node": "^8.5.1",
+    "@types/node": "^10.5.5",
     "apidoc": "^0.17.6",
     "chai": "^4.1.2",
     "copyfiles": "^1.2.0",
