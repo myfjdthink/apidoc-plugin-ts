@@ -1,4 +1,4 @@
-import Ast, { InterfaceDeclaration } from 'ts-simple-ast';
+import Ast, {InterfaceDeclaration} from 'ts-simple-ast';
 
 const ast = new Ast();
 
@@ -17,7 +17,7 @@ export function init(app) {
  * @param block
  * @param filename
  */
-function parseElements(elements, element, block, filename) {
+export function parseElements(elements, element, block, filename) {
 
   // do something with the instance of our custom element
   if (element.name === 'apiinterface') {
@@ -205,9 +205,16 @@ function getParam(param, type = 'apiSuccess') {
  * @param filename
  * @param namedInterface
  */
-function getInterface(interfacePath, namedInterface) {
-  const interfaceFile = ast.getOrAddSourceFile(interfacePath);
-  return interfaceFile.getInterface(namedInterface);
+function getInterface(interfacePath, namedInterface: string) {
+  if (namedInterface.includes('{')) {
+    const msg = `err 不支持匿名对象 文件：${interfacePath} 代码： ${namedInterface}`;
+    console.error(msg);
+    throw new Error(msg);
+  } else {
+    const interfaceFile = ast.getOrAddSourceFile(interfacePath);
+    return interfaceFile.getInterface(namedInterface);
+  }
+
 }
 
 /**

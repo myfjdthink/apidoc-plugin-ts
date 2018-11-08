@@ -96,6 +96,10 @@ export interface TeamPickStats extends PlayerStats {
   timesCaptained: number;
 }
 
+export interface Players {
+  players: Shape[];
+}
+
 export interface PlayerStats {
   totalGoals: number;
 }

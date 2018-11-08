@@ -9,7 +9,7 @@
   "scripts": {
     "apidoc": "apidoc -i test/ -o test/out",
     "copy:plugin": "rm -rf node_modules/apidoc-plugin-ts && copyfiles package.json './dist/**/*' node_modules/apidoc-plugin-ts/",
-    "lint": "tslint --project tsconfig.json",
+    "lint": "tslint --project tsconfig.json --fix",
     "test": "mocha -r ts-node/register test/**/test.ts",
     "prepare": "rm -rf dist && tsc -p src/tsconfig.json",
     "prepublishOnly": "npm run prepare && npm run lint && npm run test",
