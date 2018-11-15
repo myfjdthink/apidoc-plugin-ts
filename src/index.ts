@@ -133,6 +133,10 @@ function setInterfaceElements(matchedInterface: InterfaceDeclaration, filename, 
       if (typeInterface) {
         setInterfaceElements(typeInterface, filename, newElements, values, typeDef);
       } else {
+        if (propLabel.includes('[]')) {
+          console.error(`err: array type are not supported.  file：${filename} type： ${propType}`);
+          return;
+        }
         setObjectElements(prop, filename, newElements, values, typeDef);
       }
 
@@ -205,16 +209,9 @@ function getParam(param, type = 'apiSuccess') {
  * @param filename
  * @param namedInterface
  */
-function getInterface(interfacePath, namedInterface: string) {
-  if (namedInterface.includes('{')) {
-    const msg = `err 不支持匿名对象 文件：${interfacePath} 代码： ${namedInterface}`;
-    console.error(msg);
-    throw new Error(msg);
-  } else {
-    const interfaceFile = ast.getOrAddSourceFile(interfacePath);
-    return interfaceFile.getInterface(namedInterface);
-  }
-
+function getInterface(interfacePath, namedInterface) {
+  const interfaceFile = ast.getOrAddSourceFile(interfacePath);
+  return interfaceFile.getInterface(namedInterface);
 }
 
 /**

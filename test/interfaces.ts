@@ -1,4 +1,4 @@
-import { SearchAttributes } from './interfaces2';
+import {SearchAttributes} from './interfaces2';
 
 export interface Employer {
   /**
@@ -91,6 +91,7 @@ export interface TeamPick {
   webName: string;
   stats: TeamPickStats;
 }
+
 export interface TeamPickStats extends PlayerStats {
   timesBenched: number;
   timesCaptained: number;
@@ -102,6 +103,15 @@ export interface Players {
 
 export interface PlayerStats {
   totalGoals: number;
+}
+
+export interface ArrayType {
+  dataImport: SearchAttributes[];
+  literal: Array<{
+    a: string,
+    b: number,
+  }>;
+  isOk: boolean;
 }
 
 export interface SearchResult {

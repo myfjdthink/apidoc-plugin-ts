@@ -15,12 +15,12 @@ describe('should compile', () => {
   });
 
   it('parse directly', () => {
-    const elements = [1];
+    const elements = [];
     parseElements(elements, {
-      content: '(./test/interfaces.ts) { Players }',
+      content: '(./test/interfaces.ts) { ArrayType }',
       name: 'apiinterface',
     }, {}, '');
-    console.log('elements', JSON.stringify(elements));
+    expect(elements).lengthOf(3);
   });
 
 });
